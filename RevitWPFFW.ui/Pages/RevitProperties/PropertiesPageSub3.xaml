@@ -1,0 +1,191 @@
+﻿<UserControl x:Class="PB.RevitWPFFW.ui.PropertiesPageSub3"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignWidth="400">
+    <!-- Resource Dictionary Reference-->
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../App.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <StackPanel Background="{StaticResource MainBackgroundBrush}">
+        <!--Row Layout Label-->
+        <Border Style="{StaticResource RevitHeaderBorder}">
+            <Grid VerticalAlignment="Stretch" Height="auto" Background="{StaticResource MainBorderBrush}">
+                <TextBlock Style="{StaticResource RevitPropertyHeaderBlock}"  
+                           Text="Properties Page Sub 3"/>
+            </Grid>
+        </Border>
+
+        <!--Row Layout Data-->
+        <Grid>
+
+            <!--Definitions-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".5*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+
+            <!--Table Data-->
+
+            <!--Calculation Type-->
+            <Border Grid.Row="0"
+                    Grid.Column="0" 
+                    Style="{StaticResource RevitPropertyGridBorder}">
+                <TextBlock Style="{StaticResource RevitPropertyDescriptionBlock}"
+                           Text="Property 1" />
+            </Border>
+
+            <Border Grid.Row="0"  
+                    Grid.Column="1" 
+                    Style="{StaticResource RevitPropertyValueBorder}">
+
+                <ComboBox Style="{StaticResource DefaultComboBox}"
+                          SelectedIndex="0"
+                          x:Name="Property1Combo"
+                          ItemsSource="{Binding Path=Path, UpdateSourceTrigger=PropertyChanged}"
+                          SelectedItem="{Binding Path=Path, UpdateSourceTrigger=PropertyChanged}"
+                          DisplayMemberPath="Description"
+                          ToolTip="Tooltip">
+                </ComboBox>
+            </Border>
+
+
+            <!--Layout-->
+            <Border Grid.Row="1"
+                    Grid.Column="0" 
+                    Style="{StaticResource RevitPropertyGridBorder}">
+                <TextBlock Style="{StaticResource RevitPropertyDescriptionBlock}"
+                           Text="Property 2" />
+            </Border>
+
+            <Border Grid.Row="1"  
+                    Grid.Column="1" 
+                    Style="{StaticResource RevitPropertyValueBorder}">
+
+                <ComboBox Style="{StaticResource DefaultComboBox}"
+                          SelectedIndex="0"
+                          x:Name="Property2Combo"
+                          ItemsSource="{Binding Path=Path, UpdateSourceTrigger=PropertyChanged}"
+                          SelectedItem="{Binding Path=Path, UpdateSourceTrigger=PropertyChanged}"
+                          DisplayMemberPath="Description"
+                          ToolTip="Tooltip">
+                </ComboBox>
+            </Border>
+
+
+            <!--Starting Row-->
+            <Border Grid.Row="2"
+                    Grid.Column="0" 
+                    Style="{StaticResource RevitPropertyGridBorder}">
+                <TextBlock Style="{StaticResource RevitPropertyDescriptionBlock}"
+                           Text="Property 3" />
+            </Border>
+
+            <Border Grid.Row="2"  
+                    Grid.Column="1" 
+                    Style="{StaticResource RevitPropertyValueBorder}">
+
+                <ComboBox Style="{StaticResource DefaultComboBox}"
+                          SelectedIndex="0"
+                          x:Name="Property3Combo" 
+                          ItemsSource="{Binding Path=Path, UpdateSourceTrigger=PropertyChanged}"
+                          SelectedItem="{Binding Path=Path, UpdateSourceTrigger=PropertyChanged}"
+                          DisplayMemberPath="Description"
+                          ToolTip="Tooltip">
+                </ComboBox>
+            </Border>
+
+
+            <!--Stagger Rows-->
+            <Border Grid.Row="3"
+                    Grid.Column="0" 
+                    Style="{StaticResource RevitPropertyGridBorder}">
+                <TextBlock Style="{StaticResource RevitPropertyDescriptionBlock}"
+                           Text="Property 4" />
+            </Border>
+
+            <Border Grid.Row="3"  
+                    Grid.Column="1" 
+                    Style="{StaticResource RevitPropertyValueBorder}">
+
+                <CheckBox Margin="3,0,0,0"
+                          VerticalContentAlignment="Center"
+                          x:Name="Property4CheckBox" 
+                          IsChecked="{Binding Path=Path, UpdateSourceTrigger=PropertyChanged}"
+                          ToolTip="Tooltip"/>
+            </Border>
+
+
+            <!--Elevation Alignment-->
+            <Border Grid.Row="4"
+                    Grid.Column="0" 
+                    Style="{StaticResource RevitPropertyGridBorder}">
+                <TextBlock Style="{StaticResource RevitPropertyDescriptionBlock}"
+                           Text="Property 5" />
+            </Border>
+
+            <Border Grid.Row="4"  
+                    Grid.Column="1" 
+                    Style="{StaticResource RevitPropertyValueBorder}">
+
+                <ComboBox Style="{StaticResource DefaultComboBox}"
+                          SelectedIndex="0"
+                          x:Name="Property5Combo"
+                          ItemsSource="{Binding Path=Path, UpdateSourceTrigger=PropertyChanged}"
+                          SelectedItem="{Binding Path=Path, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                          DisplayMemberPath="Description"
+                          ToolTip="Tooltip">
+                    <ComboBox.ItemContainerStyle>
+                        <Style TargetType="ComboBoxItem">
+                            <Setter Property="IsEnabled" Value="{Binding IsEnabled}"/>
+                        </Style>
+                    </ComboBox.ItemContainerStyle>
+                </ComboBox>
+            </Border>
+
+
+            <!--Floor Direction-->
+            <Border Grid.Row="5"
+                    Grid.Column="0" 
+                    Style="{StaticResource RevitPropertyGridBorder}">
+                <TextBlock Style="{StaticResource RevitPropertyDescriptionBlock}"
+                           Text="Property 6"
+                           x:Name="Property6Label"/>
+            </Border>
+
+            <Border Grid.Row="5"  
+                    Grid.Column="1" 
+                    Style="{StaticResource RevitPropertyValueBorder}">
+
+                <ComboBox Style="{StaticResource DefaultComboBox}"
+                          SelectedIndex="0"
+                          x:Name="Property6Combo"
+                          ItemsSource="{Binding Path=Path, UpdateSourceTrigger=PropertyChanged}"
+                          SelectedItem="{Binding Path=Path, UpdateSourceTrigger=PropertyChanged}"
+                          DisplayMemberPath="Description"
+                          IsEnabled="{Binding Path=Path, UpdateSourceTrigger=PropertyChanged}"
+                          ToolTip="Tooltip">
+                
+                </ComboBox>
+            </Border>
+
+        </Grid>
+    </StackPanel>
+</UserControl>

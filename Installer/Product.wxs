@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+
+	<!--DELETE ALL "ALL CAPS" INSTRUCTIONS AFTER UPDATING (INCLUDING THIS ONE!)	-->
+
+	<!--Unload Installer project, right click, then edit the project properties-->
+
+	<!--Give product a unique ID-->
+	<!--Insert new GUID here for every upgrade-->
+	<?define ProductCode = "{0C82A625-3024-4B62-BADB-3327E3D847EA}"?>
+
+	<!--Fixed Upgrade ID-->
+	<!--INSERT NEW GUID HERE INITIALLY-->
+	<?define UpgradeCode = "{E4E089A7-AF78-41FA-857B-476BC968B603}"?>
+
+	<!--Define Main Product-->
+	<Product Id="$(var.ProductCode)"
+	         Name="!(loc.ProductName)"
+	         Language="!(loc.Language)"
+	         Version="$(var.BuildVersion)"
+	         Manufacturer= "!(loc.Company)"
+	         UpgradeCode="$(var.UpgradeCode)">
+
+		<!--Provide package details-->
+		<Package InstallerVersion="200"
+		         Compressed="yes"
+		         InstallScope="perMachine"
+		         Manufacturer="!(loc.Company)"
+		         Description="!(loc.Description)"
+		         Keywords="!(loc.Keywords)"
+		         Comments="!(loc.Comments)"
+				 Languages="!(loc.Language)"
+		         />
+
+		<!--Downgrade Error Message-->
+		<MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeErrorMessage)"/>
+
+		<!--Include .cab file into .msi file-->
+		<MediaTemplate
+			EmbedCab="yes"/>
+
+		<!--Define main app icon-->
+		<!--REFERENCE ICON IN MAIN PROJECT FOLDER-->
+		<Icon Id="Icon.ico" SourceFile="$(var.PB.RevitWPFFW.ProjectDir)\pb_icon.ico"/>
+
+		<!--Use the icon.ico icon for this installer (shows up in Add/Remove Programs)-->
+		<Property Id="ARPPRODUCTICON">Icon.ico</Property>
+
+		<!--Get reference to properties file-->
+		<PropertyRef Id="ARPURLINFOABOUT"/>
+
+		<!--Installer UI is Customized Version of WIX FeatureTree-->
+		<UIRef Id="PB_WixUI_FeatureTree"/>
+
+		<!--Change the installer ui background images-->
+		<!--Bitmap Image Sizes: background.bmp is 493 x 312  / banner.bmp is 493 x 58-->
+		<!--License is in rft format-->
+		<WixVariable Id="WixUIDialogBmp" Value="$(var.ProjectDir)\Assets\background.bmp"/>
+		<WixVariable Id="WixUIBannerBmp" Value="$(var.ProjectDir)\Assets\banner.bmp"/>
+		<WixVariable Id="WixUILicenseRtf" Value="$(var.ProjectDir)\Assets\license.rtf"/>
+
+
+		<!--Define components, shortcuts, files, etc... for installer-->
+		<!--CHANGE PRODUCT TITLE INFORMATION HERE-->
+		<!--Features for REVIT v2020-->
+		<Feature Id="PRODUCT2020" Title="Performance Seating v2020" Level="1">
+
+			<ComponentGroupRef Id="2020Components"/>
+
+		</Feature>
+
+		<!--Features for REVIT v2021-->
+		<Feature Id="PRODUCT2021" Title="Performance Seating v2021" Level="1">
+
+			<ComponentGroupRef Id="2021Components" />
+
+		</Feature>
+
+		<!--Features for REVIT v2022-->
+		<Feature Id="PRODUCT2022" Title="Performance Seating v2022" Level="1">
+
+			<ComponentGroupRef Id="2022Components" />
+
+		</Feature>
+
+	</Product>
+
+
+</Wix>

@@ -1,0 +1,16 @@
+﻿<!-- App.xaml -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:PB.RevitWPFFW.ui">
+
+
+    <ResourceDictionary.MergedDictionaries>
+        <!-- Styles. -->
+        <ResourceDictionary Source="pack://application:,,,/PB.MVVMToolkit;component/Styles/Styles.xaml"></ResourceDictionary>
+
+        <!-- Converters. -->
+        <ResourceDictionary Source="Converters/Converters.xaml" />
+
+    </ResourceDictionary.MergedDictionaries>
+    
+</ResourceDictionary>

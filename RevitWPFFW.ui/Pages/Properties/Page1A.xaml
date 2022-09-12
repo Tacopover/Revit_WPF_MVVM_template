@@ -1,0 +1,93 @@
+﻿<UserControl x:Class="PB.RevitWPFFW.ui.Page1A"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PB.RevitWPFFW.ui"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="300">
+
+    <!-- Resource Dictionary Reference-->
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../App.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+
+    <StackPanel Background="{StaticResource MainBackgroundBrush}">
+        <Grid>
+
+            <StackPanel>
+                <TextBlock Style="{StaticResource MediumBoldTextBlockStyle}"
+                       HorizontalAlignment="Center" 
+                       Foreground="{StaticResource DarkGrayFontBrush}"
+                       >Page 1A</TextBlock>
+
+                <TextBlock HorizontalAlignment="Center"
+                           x:Name="DocumentText"
+                           Text="{Binding Path=DocumentData, UpdateSourceTrigger=PropertyChanged}">
+
+                </TextBlock>
+
+                <!-- ComboBox Sample -->
+                <!-- Binding uses same ViewModel as Base Page1-->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+
+                    <TextBlock Grid.Row="0" 
+                               Grid.Column="0"
+                               Margin="20 5 0 0"
+                               Style="{StaticResource BaseTextBlockStyle}">
+                        ComboBox
+                    </TextBlock>
+
+                    <ComboBox Grid.Row="0" 
+                              Grid.Column="1"
+                              Margin="20 5 20 0"
+                              Style="{StaticResource DefaultComboBox}"
+                              ItemsSource="{Binding ComboItems, UpdateSourceTrigger=PropertyChanged}"
+                              SelectedItem="{Binding SelectedComboItem, UpdateSourceTrigger=PropertyChanged}"
+                              DisplayMemberPath="Description">
+                    </ComboBox>
+                    
+
+                    <TextBlock Grid.Row="1" 
+                               Grid.Column="0"
+                               Margin="20 5 0 0"
+                               Style="{StaticResource BaseTextBlockStyle}">
+                        Combo Result
+                    </TextBlock>
+
+                    <TextBox Grid.Row="1" 
+                             Grid.Column="1"
+                             Margin="20 5 20 0"
+                             IsEnabled="False"
+                             Style="{StaticResource DefaultTextBox}"
+                             Text="{Binding ComboSelectionText, UpdateSourceTrigger=PropertyChanged}"/>
+
+                </Grid>
+
+                <Button Name="EditComboList"
+                        Width="100"
+                        Height="30"
+                        Margin="0,20,0,0"
+                        Style="{StaticResource NormalButton}"
+                        Command="{Binding OpenDialogCustomCommand}"
+                >Edit Combo List</Button>
+
+            </StackPanel>
+        </Grid>
+    </StackPanel>
+</UserControl>
